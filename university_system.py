@@ -86,3 +86,41 @@ class Enrollment:
     def __str__(self):
         return (self.student.name + " -> " + self.course.code
                 + " : grade " + str(self.grade))
+ 
+ 
+# ==================== PART 6 - Registry ====================
+ 
+class Registry:
+    """Owns all the students, courses and enrollments of the system."""
+ 
+    def __init__(self):
+        self.students = []
+        self.courses = []
+        self.enrollments = []
+ 
+    def add_student(self, student):
+        self.students.append(student)
+ 
+    def add_course(self, course):
+        self.courses.append(course)
+ 
+    def enroll_student(self, student, course, grade):
+        """Create an Enrollment object and keep it in the list."""
+        enrollment = Enrollment(student, course, grade)
+        self.enrollments.append(enrollment)
+        return enrollment
+ 
+    def show_students(self):
+        print("--- Students ---")
+        for student in self.students:
+            print(student)
+ 
+    def show_courses(self):
+        print("--- Courses ---")
+        for course in self.courses:
+            print(course)
+ 
+    def show_enrollments(self):
+        print("--- Enrollments ---")
+        for enrollment in self.enrollments:
+            print(enrollment)

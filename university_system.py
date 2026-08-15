@@ -54,12 +54,19 @@ class Course:
                 + " (" + str(self.seats) + " seats)")
  
  
-# ==================== PART 4 - Enrollment and grade ====================
+# ============ PART 4 and 5 - Enrollment, grade property, composition ============
  
+# Enrollment HAS-A Student and HAS-A Course. An enrollment is not a kind of
+# student and not a kind of course, so inheritance would be wrong here.
+# It simply connects two existing objects together plus a grade, which is
+# exactly what composition means.
 class Enrollment:
-    """Holds one grade and keeps it valid."""
+    """Connects one Student, one Course, and one grade."""
  
-    def __init__(self, grade):
+    def __init__(self, student, course, grade):
+        self.student = student      # a real Student object, not a string
+        self.course = course        # a real Course object, not a string
+ 
         # using the property below, so the grade given here is validated too
         self.grade = grade
  
@@ -75,3 +82,7 @@ class Enrollment:
             raise ValueError("Grade must be between 0 and 100, but got "
                              + str(value))
         self.__grade = value        # the two underscores make it private
+ 
+    def __str__(self):
+        return (self.student.name + " -> " + self.course.code
+                + " : grade " + str(self.grade))

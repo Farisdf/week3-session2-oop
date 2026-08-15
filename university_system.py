@@ -37,3 +37,18 @@ class Student(Person):
         # must RETURN a string, not print it
         return ("Student(id=" + str(self.person_id) + ", name=" + self.name
                 + ", major=" + self.major + ")")
+ 
+ 
+# ==================== PART 3 - Course ====================
+ 
+class Course:
+    """One university course."""
+ 
+    def __init__(self, code, name, seats):
+        self.code = code
+        self.name = name
+        self.seats = seats
+ 
+    def __str__(self):
+        return (self.code + " - " + self.name
+                + " (" + str(self.seats) + " seats)")

@@ -1,0 +1,17 @@
+[
+    {
+        "person_id": 101,
+        "name": "Lina",
+        "major": "Computer Science"
+    },
+    {
+        "person_id": 102,
+        "name": "Omar",
+        "major": "Information Systems"
+    },
+    {
+        "person_id": 103,
+        "name": "Sara",
+        "major": "Software Engineering"
+    }
+]

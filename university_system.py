@@ -1,3 +1,6 @@
+import json
+ 
+ 
 # ==================== PART 1 - Person and Student ====================
  
 class Person:
@@ -216,4 +219,24 @@ except ValueError as error:
     # one except catches BOTH problems, because both raise ValueError
     print("Sorry, that grade was not accepted.")
     print("Reason:", error)
+print()
+ 
+ 
+# ==================== PART 9 - Save students to JSON ====================
+ 
+print("===== Part 9: save to students.json =====")
+ 
+# json cannot save objects directly, so we build a list of dictionaries
+students_data = []
+for student in registry.students:
+    students_data.append({
+        "person_id": student.person_id,
+        "name": student.name,
+        "major": student.major
+    })
+ 
+with open("students.json", "w") as file:
+    json.dump(students_data, file, indent=4)
+ 
+print("students.json was created.")
 print()

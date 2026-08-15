@@ -30,3 +30,10 @@ class Student(Person):
         print("Student " + str(self.person_id) + ": " + self.name
               + " - major: " + self.major)
  
+    # ==================== PART 2 - Special Method ====================
+ 
+    def __str__(self):
+        """Return text shown when we print a Student object."""
+        # must RETURN a string, not print it
+        return ("Student(id=" + str(self.person_id) + ", name=" + self.name
+                + ", major=" + self.major + ")")

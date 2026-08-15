@@ -52,3 +52,26 @@ class Course:
     def __str__(self):
         return (self.code + " - " + self.name
                 + " (" + str(self.seats) + " seats)")
+ 
+ 
+# ==================== PART 4 - Enrollment and grade ====================
+ 
+class Enrollment:
+    """Holds one grade and keeps it valid."""
+ 
+    def __init__(self, grade):
+        # using the property below, so the grade given here is validated too
+        self.grade = grade
+ 
+    @property
+    def grade(self):
+        """Give back the private grade."""
+        return self.__grade
+ 
+    @grade.setter
+    def grade(self, value):
+        """Only allow a grade between 0 and 100."""
+        if value < 0 or value > 100:
+            raise ValueError("Grade must be between 0 and 100, but got "
+                             + str(value))
+        self.__grade = value        # the two underscores make it private

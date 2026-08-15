@@ -124,3 +124,29 @@ class Registry:
         print("--- Enrollments ---")
         for enrollment in self.enrollments:
             print(enrollment)
+ 
+ 
+registry = Registry()
+student1 = Student(101, "Lina", "Computer Science")
+course2 = Course("DB101", "Introduction to Databases", 3)
+ 
+ 
+# ==================== PART 7 - Error handling ====================
+ 
+print("===== Part 7: enter a grade =====")
+try:
+    typed = input("Enter a grade for Lina in CS101 (0-100): ")
+ 
+    # int() raises ValueError if the text is not a number, like "hello"
+    number = int(typed)
+ 
+    # the Enrollment property raises ValueError if it is outside 0-100
+    new_enrollment = registry.enroll_student(student1, course2, number)
+ 
+    print("Enrollment created:", new_enrollment)
+ 
+except ValueError as error:
+    # one except catches BOTH problems, because both raise ValueError
+    print("Sorry, that grade was not accepted.")
+    print("Reason:", error)
+print()

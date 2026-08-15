@@ -240,3 +240,16 @@ with open("students.json", "w") as file:
  
 print("students.json was created.")
 print()
+ 
+ 
+# ==================== PART 10 - Read the JSON file back ====================
+ 
+print("===== Part 10: read students.json back =====")
+ 
+with open("students.json", "r") as file:
+    loaded_students = json.load(file)
+ 
+for record in loaded_students:
+    print("ID:", record["person_id"],
+          "| Name:", record["name"],
+          "| Major:", record["major"])

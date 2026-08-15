@@ -126,9 +126,76 @@ class Registry:
             print(enrollment)
  
  
+# ==================== PART 8 - Build the system ====================
+ 
 registry = Registry()
+ 
+# three students
 student1 = Student(101, "Lina", "Computer Science")
+student2 = Student(102, "Omar", "Information Systems")
+student3 = Student(103, "Sara", "Software Engineering")
+ 
+registry.add_student(student1)
+registry.add_student(student2)
+registry.add_student(student3)
+ 
+# two courses
+course1 = Course("CS101", "Introduction to Programming", 2)
 course2 = Course("DB101", "Introduction to Databases", 3)
+ 
+registry.add_course(course1)
+registry.add_course(course2)
+ 
+# three enrollments
+registry.enroll_student(student1, course1, 85)
+registry.enroll_student(student2, course1, 90)
+registry.enroll_student(student3, course2, 78)
+ 
+ 
+# ---------- Part 1 test: describe() on both classes ----------
+print("===== Part 1: describe() =====")
+person = Person(100, "Ahmad")
+person.describe()
+student1.describe()
+print()
+ 
+# ---------- Part 2 test: printing a Student ----------
+print("===== Part 2: print a Student =====")
+print(student1)
+print()
+ 
+# ---------- Part 3 test: printing Courses ----------
+print("===== Part 3: Courses =====")
+print(course1)
+print(course2)
+print()
+ 
+# ---------- Part 4 test: the grade property ----------
+print("===== Part 4: grade property =====")
+enrollment = registry.enrollments[0]
+print("grade is:", enrollment.grade)
+ 
+try:
+    enrollment.grade = 150          # this must be rejected
+except ValueError as error:
+    print("Rejected:", error)
+print()
+ 
+# ---------- Part 5 test: composition ----------
+print("===== Part 5: composition =====")
+print(enrollment.student.name)      # reach the Student through Enrollment
+print(enrollment.course.code)       # reach the Course through Enrollment
+print(enrollment.grade)
+print()
+ 
+# ---------- Part 8 test: show everything ----------
+print("===== Part 8: the whole system =====")
+registry.show_students()
+print()
+registry.show_courses()
+print()
+registry.show_enrollments()
+print()
  
  
 # ==================== PART 7 - Error handling ====================
